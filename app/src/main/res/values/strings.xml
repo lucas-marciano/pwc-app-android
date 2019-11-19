@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">PWC</string>
+
+    <string name="label_forgotten_password">Esqueceu a senha?</string>
+    <string name="label_sigin">Ainda não tem registro?</string>
+    <string name="label_register">Registre-se</string>
+
+    <string name="button_text_login">Login</string>
+
+    <string name="message_error_required">O campo é obrigatório</string>
+    <string name="message_error_connection">Ocorreu um erro na conexão com o servidor</string>
+
+    <string name="hint_email">E-mail</string>
+    <string name="hint_password">Senha</string>
+
 </resources>

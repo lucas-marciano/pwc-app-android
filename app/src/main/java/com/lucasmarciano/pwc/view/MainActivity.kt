@@ -1,7 +1,8 @@
-package com.lucasmarciano.pwc
+package com.lucasmarciano.pwc.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.lucasmarciano.pwc.R
 
 class MainActivity : AppCompatActivity() {
 
