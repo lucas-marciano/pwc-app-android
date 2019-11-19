@@ -11,7 +11,7 @@
         android:label="login_fragment"
         tools:layout="@layout/login_fragment" >
         <action
-            android:id="@+id/action_loginFragment_to_questionsFragment3"
+            android:id="@+id/action_loginFragment_to_questionsFragment"
             app:destination="@id/questionsFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
@@ -24,7 +24,7 @@
         android:label="questions_fragment"
         tools:layout="@layout/questions_fragment" >
         <action
-            android:id="@+id/action_questionsFragment_to_loginFragment2"
+            android:id="@+id/action_questionsFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"

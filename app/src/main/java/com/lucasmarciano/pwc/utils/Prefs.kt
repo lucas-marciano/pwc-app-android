@@ -11,10 +11,10 @@ import android.content.SharedPreferences
  * @author lucasmarciano
  */
 class Prefs(context: Context) {
-    val PREFS_FILENAME = "com.lucasmarciano.pwc.utils.prefs"
-    val STREET_NAME_PREF_KEY = "STREET_NAME_PREF_KEY"
-    val CITY_NAME_PREF_KEY = "CITY_NAME_PREF_KEY"
-    val STATE_NAME_PREF_KEY = "STATE_NAME_PREF_KEY"
+    private val PREFS_FILENAME = "com.lucasmarciano.pwc.utils.prefs"
+    private val STREET_NAME_PREF_KEY = "STREET_NAME_PREF_KEY"
+    private val CITY_NAME_PREF_KEY = "CITY_NAME_PREF_KEY"
+    private val STATE_NAME_PREF_KEY = "STATE_NAME_PREF_KEY"
 
     val prefs: SharedPreferences = context.getSharedPreferences(PREFS_FILENAME, 0)
 
