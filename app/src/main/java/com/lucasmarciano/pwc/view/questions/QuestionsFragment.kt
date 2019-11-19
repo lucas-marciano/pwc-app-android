@@ -9,6 +9,13 @@ import android.view.ViewGroup
 
 import com.lucasmarciano.pwc.R
 
+/**
+ * Questions screen.
+ *
+ * @project pwc
+ * @create_at 2019-11-18
+ * @author lucasmarciano
+ */
 class QuestionsFragment : Fragment() {
 
     private lateinit var viewModel: QuestionsViewModel

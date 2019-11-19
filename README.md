@@ -12,3 +12,8 @@ Project for the company Abracomm
         - views
             - login (login screen)
             - questions (questions screen)
+            
+            
+## Others
+
+- Zeplin interface: [https://app.zeplin.io/project/58ed3855635e582384ae365d/dashboard](https://app.zeplin.io/project/58ed3855635e582384ae365d/dashboard)

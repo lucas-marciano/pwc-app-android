@@ -9,6 +9,13 @@ import android.view.ViewGroup
 
 import com.lucasmarciano.pwc.R
 
+/**
+ * Login screen.
+ *
+ * @project pwc
+ * @create_at 2019-11-19
+ * @author lucasmarciano
+ */
 class LoginFragment : Fragment() {
 
     private lateinit var viewModel: LoginViewModel
