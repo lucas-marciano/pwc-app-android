@@ -1,6 +1,7 @@
 package com.lucasmarciano.pwc.view.login
 
 import androidx.lifecycle.ViewModel
+import com.lucasmarciano.pwc.utils.Logger
 
 
 /**
@@ -11,5 +12,6 @@ import androidx.lifecycle.ViewModel
  * @author lucasmarciano
  */
 class LoginViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+    val TAG = Logger.tag
+
 }

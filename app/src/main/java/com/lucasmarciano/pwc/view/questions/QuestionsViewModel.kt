@@ -1,6 +1,7 @@
 package com.lucasmarciano.pwc.view.questions
 
 import androidx.lifecycle.ViewModel
+import com.lucasmarciano.pwc.utils.Logger
 
 /**
  * View model for the questions fragment
@@ -10,5 +11,5 @@ import androidx.lifecycle.ViewModel
  * @author lucasmarciano
  */
 class QuestionsViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+    val TAG = Logger.tag
 }
