@@ -11,10 +11,6 @@ import com.lucasmarciano.pwc.R
 
 class QuestionsFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = QuestionsFragment()
-    }
-
     private lateinit var viewModel: QuestionsViewModel
 
     override fun onCreateView(

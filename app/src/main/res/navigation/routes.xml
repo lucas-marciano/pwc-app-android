@@ -1,5 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/routes">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/routes"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.lucasmarciano.pwc.view.login.LoginFragment"
+        android:label="login_fragment"
+        tools:layout="@layout/login_fragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_questionsFragment3"
+            app:destination="@id/questionsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/questionsFragment"
+        android:name="com.lucasmarciano.pwc.view.questions.QuestionsFragment"
+        android:label="questions_fragment"
+        tools:layout="@layout/questions_fragment" >
+        <action
+            android:id="@+id/action_questionsFragment_to_loginFragment2"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/loginFragment" />
+    </fragment>
 
 </navigation>
