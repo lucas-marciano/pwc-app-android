@@ -1,6 +1,7 @@
 package com.lucasmarciano.pwc.utils
 
 import android.app.Application
+import com.lucasmarciano.pwc.injection.adaptersModules
 import com.lucasmarciano.pwc.injection.viewsModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -31,7 +32,7 @@ class MainApplication : Application() {
         startKoin {
             androidLogger()
             androidContext(this@MainApplication)
-            modules(listOf(viewsModules))
+            modules(listOf(viewsModules, adaptersModules))
         }
     }
 }

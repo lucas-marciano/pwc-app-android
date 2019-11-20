@@ -11,6 +11,7 @@
 
     <string name="message_error_required">O campo é obrigatório</string>
     <string name="message_error_connection">Ocorreu um erro na conexão com o servidor</string>
+    <string name="message_error_location">Verifique se o seu GPS está ativado</string>
     <string name="message_error_credentials">Usuário ou senha inválidos</string>
     <string name="message_error_email_format">O valor informado deve ser um e-mail válido</string>
     <string name="message_error_permission_location">A app precisa da permissão da localização para continuar</string>
@@ -18,5 +19,7 @@
 
     <string name="hint_email">E-mail</string>
     <string name="hint_password">Senha</string>
+    <string name="label_title_questions_scren">Marketing na era digital</string>
+    <string name="message_end">Muito obrigado por participar!</string>
 
 </resources>

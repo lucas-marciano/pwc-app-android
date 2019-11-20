@@ -11,6 +11,7 @@
     <color name="colorTextPrimary">#de000000</color>
 
     <color name="colorHint">#61000000</color>
+    <color name="colorDivider">#4c000000</color>
 
     <color name="colorDegradeIn">#d74a6c</color>
     <color name="colorDegradeOut">#d63b32</color>

@@ -1,7 +1,9 @@
 package com.lucasmarciano.pwc.view.login
 
 import android.Manifest
+import android.content.Context
 import android.content.pm.PackageManager
+import android.location.*
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -16,7 +18,9 @@ import com.lucasmarciano.pwc.R
 import com.lucasmarciano.pwc.utils.Logger
 import com.lucasmarciano.pwc.utils.ext.isEmailValid
 import com.lucasmarciano.pwc.utils.ext.toast
+import com.lucasmarciano.pwc.utils.prefs
 import kotlinx.android.synthetic.main.login_fragment.*
+import java.util.*
 
 /**
  * Login screen.
@@ -49,7 +53,6 @@ class LoginFragment : Fragment() {
 
         checkOnFocusFields()
         setupActions()
-        checkRunTimePermission()
     }
 
     override fun onRequestPermissionsResult(
@@ -63,7 +66,7 @@ class LoginFragment : Fragment() {
         when (requestCode) {
             MY_PERMISSIONS_REQUEST -> {
                 if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    viewModel.getCurrentLocation()
+                    checkRunTimePermission(false)
                 } else {
                     activity?.toast(R.string.message_error_permission_location)
                 }
@@ -137,14 +140,9 @@ class LoginFragment : Fragment() {
 
                 if (viewModel.isInternetAvailable()) {
                     if (viewModel.login(et_email.text?.toString(), et_password.text?.toString())) {
-                        checkRunTimePermission()
-
                         pb_location.visibility = View.VISIBLE
                         bt_login.visibility = View.INVISIBLE
-                        activity?.toast(R.string.message_welcome)
-
-                        it.findNavController()
-                            .navigate(R.id.action_loginFragment_to_questionsFragment)
+                        checkRunTimePermission(true)
                     } else {
                         activity?.toast(R.string.message_error_credentials)
                     }
@@ -159,8 +157,10 @@ class LoginFragment : Fragment() {
 
     /**
      * Method to check and request the run time permission.
+     *
+     * @param goto
      */
-    private fun checkRunTimePermission() {
+    private fun checkRunTimePermission(goto: Boolean) {
         if (Logger.DEBUG) Log.d(TAG, "checkRunTimePermission")
 
         activity?.let { act ->
@@ -168,8 +168,7 @@ class LoginFragment : Fragment() {
                 if (ContextCompat.checkSelfPermission(
                         ctx,
                         Manifest.permission.ACCESS_FINE_LOCATION
-                    )
-                    != PackageManager.PERMISSION_GRANTED
+                    ) != PackageManager.PERMISSION_GRANTED
                 ) {
                     ActivityCompat.requestPermissions(
                         act,
@@ -177,11 +176,55 @@ class LoginFragment : Fragment() {
                         MY_PERMISSIONS_REQUEST
                     )
                 } else {
-                    viewModel.getCurrentLocation()
+                    val locationManager: LocationManager =
+                        act.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+
+                    val locationListener = object : LocationListener {
+
+                        override fun onLocationChanged(location: Location) {
+                            val addresses: List<Address>
+                            val geoCoder = Geocoder(context, Locale.getDefault())
+                            addresses =
+                                geoCoder.getFromLocation(location.latitude, location.longitude, 1)
+                            if (addresses.isNotEmpty()) {
+                                prefs.streetName = addresses[0].getAddressLine(0)
+                                prefs.cityName = addresses[0].subAdminArea
+                                prefs.stateName = addresses[0].adminArea
+
+                                if (goto) {
+                                    view?.findNavController()
+                                        ?.navigate(R.id.action_loginFragment_to_questionsFragment)
+                                }
+                            } else {
+                                pb_location.visibility = View.INVISIBLE
+                                bt_login.visibility = View.VISIBLE
+                                activity?.toast(R.string.message_error_location)
+                            }
+                        }
+
+                        override fun onStatusChanged(
+                            provider: String,
+                            status: Int,
+                            extras: Bundle
+                        ) {
+                        }
+
+                        override fun onProviderEnabled(provider: String) {
+                        }
+
+                        override fun onProviderDisabled(provider: String) {
+                        }
+                    }
+
+                    locationManager.requestLocationUpdates(
+                        LocationManager.NETWORK_PROVIDER,
+                        0,
+                        0f,
+                        locationListener
+                    )
                 }
             }
         }
 
     }
-
 }
