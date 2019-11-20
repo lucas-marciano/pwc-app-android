@@ -46,42 +46,4 @@ class LoginViewModel(private val context: Context) : ViewModel() {
         val network: NetworkInfo? = cm.activeNetworkInfo
         return network?.isConnected == true
     }
-
-    /**
-     * Method to get the address and insert in the SharedPreference
-     */
-    fun getCurrentLocation() {
-        if (Logger.DEBUG) Log.d(TAG, "getCurrentLocation")
-
-        val locationManager: LocationManager =
-            context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-
-        val locationListener = object : LocationListener {
-
-            override fun onLocationChanged(location: Location) {
-                val addresses: List<Address>
-                val geoCoder = Geocoder(context, Locale.getDefault())
-                addresses = geoCoder.getFromLocation(location.latitude, location.longitude, 1)
-                prefs.streetName = addresses[0].getAddressLine(0)
-                prefs.cityName = addresses[0].locality
-                prefs.stateName = addresses[0].adminArea
-            }
-
-            override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {
-            }
-
-            override fun onProviderEnabled(provider: String) {
-            }
-
-            override fun onProviderDisabled(provider: String) {
-            }
-        }
-
-        locationManager.requestLocationUpdates(
-            LocationManager.NETWORK_PROVIDER,
-            0,
-            0f,
-            locationListener
-        )
-    }
 }

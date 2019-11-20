@@ -29,10 +29,4 @@ class Prefs(context: Context) {
     var stateName: String?
         get() = prefs.getString(STATE_NAME_PREF_KEY, "")
         set(value) = prefs.edit().putString(STATE_NAME_PREF_KEY, value).apply()
-
-    fun clearPrefs() {
-        streetName = ""
-        cityName = ""
-        stateName = ""
-    }
 }

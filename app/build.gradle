@@ -28,6 +28,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation "androidx.core:core-ktx:$corektx_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
+    implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
 
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
     implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
@@ -37,6 +38,9 @@ dependencies {
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:$viewmodel_version"
 
     implementation "org.koin:koin-android-viewmodel:$koin_version"
+
+    // Lib to make a list with animation
+    implementation "com.yarolegovich:discrete-scrollview:$discretescrollview_version"
 
     testImplementation "junit:junit:4.12"
     androidTestImplementation "androidx.test.ext:junit:1.1.1"
