@@ -2,14 +2,16 @@
 <resources>
     <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#FFFFFF</color>
-    <color name="colorAccent">#ff8000</color>
+    <color name="colorAccent">#de000000</color>
 
     <color name="colorButtonPrimary">#dc402d</color>
     <color name="colorButtonSecondary">#8a000000</color>
+    <color name="colorButtonQuestion">#ff8000</color>
 
     <color name="colorTextPrimary">#de000000</color>
 
     <color name="colorHint">#61000000</color>
+    <color name="colorDivider">#4c000000</color>
 
     <color name="colorDegradeIn">#d74a6c</color>
     <color name="colorDegradeOut">#d63b32</color>
